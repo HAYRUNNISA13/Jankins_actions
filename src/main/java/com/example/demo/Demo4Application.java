@@ -13,6 +13,6 @@ public class Demo4Application {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello from Spring Boot on Kubernetes!";
+        return "Hello from Spring Boot on Kubernetes!ksndks";
     }
 }
