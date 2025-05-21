@@ -1,8 +1,3 @@
-# Temel image olarak Java içeren resmi OpenJDK kullan
 FROM openjdk:17-jdk-slim
-
-# JAR dosyasını container içine kopyala
-COPY build/libs/*.jar app.jar
-
-# Uygulamayı başlat
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY build/libs/demo4-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
