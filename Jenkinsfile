@@ -5,7 +5,7 @@ pipeline {
     }
 
     triggers {
-        // GitHub webhook tetikleyicisi
+
         githubPush()
     }
     stages {
