@@ -4,10 +4,7 @@ pipeline {
     KUBECONFIG = "/var/lib/jenkins/.kube/config"
     }
 
-    triggers {
 
-
-    }
     stages {
         stage('Clone') {
             steps {
