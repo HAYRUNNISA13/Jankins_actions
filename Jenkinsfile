@@ -6,7 +6,7 @@ pipeline {
 
     triggers {
 
-        githubPush()
+
     }
     stages {
         stage('Clone') {
