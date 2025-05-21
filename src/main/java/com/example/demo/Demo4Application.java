@@ -15,6 +15,6 @@ public class Demo4Application {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello from Spring Boot on Kubernetes!ksndks";
+        return "Hello from Spring Boot on Kubernetes!jenkins";
     }
 }
