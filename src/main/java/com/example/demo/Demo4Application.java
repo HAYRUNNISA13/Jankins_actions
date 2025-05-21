@@ -15,6 +15,6 @@ public class Demo4Application {
 
     @GetMapping("/")
     public String hello() {
-        return "Hello from Kubernetesss!jenkinsssssss";
+        return "Hello from Kubernetessss!jenkinsssssss";
     }
 }
