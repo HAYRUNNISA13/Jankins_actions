@@ -35,7 +35,7 @@ pipeline {
         }
         stage('K8s Deployment') {
             steps {
-                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f deployment.yaml --validate=false'
             }
         }
         stage('K8s Service') {
