@@ -1,34 +1,26 @@
 pipeline {
     agent any
     environment {
-        KUBECONFIG = "/var/lib/jenkins/.kube/config"
+    KUBECONFIG = "/var/lib/jenkins/.kube/config"
     }
 
-    stages {
-        stage('Start Minikube') {
-            steps {
-                sh 'minikube start'
-            }
-        }
 
+    stages {
         stage('Clone') {
             steps {
                 git branch: 'main', credentialsId: 'github-creds', url: 'https://github.com/HAYRUNNISA13/Jankins_actions.git'
             }
         }
-
         stage('Build JAR') {
             steps {
                 sh './gradlew clean build -x test'
             }
         }
-
         stage('Docker Build') {
             steps {
                 sh 'docker build -t hayruncelik692/springboot-app:latest .'
             }
         }
-
         stage('Docker Login') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -36,30 +28,20 @@ pipeline {
                 }
             }
         }
-
         stage('Docker Push') {
             steps {
                 sh 'docker push hayruncelik692/springboot-app:latest'
             }
         }
-
         stage('K8s Deployment') {
             steps {
                 sh 'kubectl apply -f deployment.yaml'
             }
         }
-
         stage('K8s Service') {
             steps {
                 sh 'kubectl apply -f service.yaml'
             }
-        }
-    }
-
-    post {
-        always {
-            echo 'Pipeline finished. Stopping Minikube...'
-            sh 'minikube stop'
         }
     }
 }
